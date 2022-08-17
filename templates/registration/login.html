@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<div class="container">
+    <h2>login</h2>
+    <h3>must be superuser, please check with the site admin</h3>
+    {% if form.errors %}
+    <p>you dont have a match user</p>
+    {% endif%}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        
+        <button type="submit" class="btn btn-primary">Login</button>
+        <input type="hidden" name="next" value="{{next}}">
+    </form>
+</div>
+  
+{% endblock  %}
